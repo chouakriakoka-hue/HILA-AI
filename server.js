@@ -48,9 +48,9 @@ app.post("/api/chat", async (req, res) => {
       parts: [{ text: m.content.slice(0, 6000) }]
     }));
 
-    const response = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent",
-      {
+    const model = genAI.getGenerativeModel({
+  model: "gemini-3.8-flash"
+});
         method: "POST",
         headers: {
           "Content-Type": "application/json",
