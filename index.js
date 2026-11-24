@@ -1,4 +1,4 @@
-import express from "express";
+OPENAI express from "express";
 import cors from "cors";
 import "dotenv/config";
 import OpenAI from "openai";
@@ -7,18 +7,17 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "1mb" }));
 
-const apiKey = process.env.OPENAI_API_KEY;
-const client = apiKey ? new OpenAI({ apiKey }) : null;
-const model = process.env.OPENAI_MODEL || "gpt-4.1-mini";
-
-app.get("/", (_req, res) => {
+const apiKey = process.env.GEMINI_API_KEY;
+const client = apiKey ? new GEMINI({ apiKey;
+const model = process.env.OPENAI_MODEL || "gemini-3.8-flash";
+appp.get("/", (_req, res) => {
   res.send("HILA AI backend is running.");
 });
 
 app.post("/api/chat", async (req, res) => {
   try {
     if (!client) {
-      return res.status(500).json({ error: "مفتاح OpenAI غير مضبوط في ملف .env" });
+      return res.status(500).json({ error: "مفتاح Gemeni غير مضبوط في ملف .env" });
     }
 
     const incoming = Array.isArray(req.body?.messages) ? req.body.messages : [];
@@ -45,7 +44,7 @@ app.post("/api/chat", async (req, res) => {
     res.json({ reply: response.output_text || "ما قدرتش نولّد إجابة." });
   } catch (error) {
     console.error("HILA API error:", error);
-    res.status(500).json({ error: "حدث خطأ أثناء الاتصال بـ OpenAI. تحقق من إعدادات API." });
+    res.status(500).json({ error: "حدث خطأ أثناء الاتصال بـ Gemeni. تحقق من إعدادات API." });
   }
 });
 
