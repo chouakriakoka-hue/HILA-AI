@@ -12,8 +12,8 @@ app.use(express.json({ limit: "1mb" }));
 const apiKey = process.env.GEMINI_API_KEY;
 const client = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
-const PRIMARY_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
-const FALLBACK_MODEL = process.GEMINI_FALLBACK_MODEL || "gemini-2.5-flash-lite";
+const PRIMARY_MODEL = process.env.GEMINI_MODEL || "gemini-3.8-flash";
+const FALLBACK_MODEL = process.GEMINI_FALLBACK_MODEL || "gemini-3.6-flash-lite";
 
 const SYSTEM_PROMPT =
   "أنت HILA AI، مساعد ذكي مفيد وواضح. أجب بلغة المستخدم، ويمكنك استعمال الدارجة الجزائرية عندما يكتب بها. اشرح ببساطة ولا تخترع معلومات.";
