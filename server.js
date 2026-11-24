@@ -36,7 +36,7 @@ app.post("/api/chat", async (req, res) => {
       });
     }
 
-    const messages = incoming.slice(-30)
+    const messages = incoming.slice(-10)
       .filter(m =>
         m &&
         ["user", "assistant"].includes(m.role) &&
