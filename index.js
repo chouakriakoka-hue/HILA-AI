@@ -117,8 +117,19 @@ app.post("/api/chat", async (req, res) => {
       }
     }
 
-    const reply =
-      response?.text?.trim() || "ما قدرتش نولّد إجابة، حاول مرة أخرى.";
+   const response = await ai.models.generateContent({
+  model: modelName,
+  contents: contents,
+  config: {
+    systemInstruction: `
+      أنت HILA AI، مساعد ذكي.
+      جاوب بسرعة، بوضوح، وباللغة التي يستعملها المستخدم.
+      لا تطوّل إلا إذا طلب المستخدم التفصيل.
+    `,
+    temperature: 0.7,
+    maxOutputTokens: 1024
+  }
+});
 
     return res.json({ reply });
   } catch (error) {
