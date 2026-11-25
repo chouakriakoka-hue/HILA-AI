@@ -77,7 +77,7 @@
     messages.push({ role: "user", content: value });
     input.value = "";
     sendButton.disabled = true;
-    const loading = addMessage("assistant", "HILA AI تفكّر...");
+    const loading = addMessage("assistant", "•");
 
     try {
       const response = await fetch(API_URL, {
